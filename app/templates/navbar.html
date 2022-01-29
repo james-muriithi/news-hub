@@ -13,22 +13,22 @@
         <div class="collapse navbar-collapse bg-lg-transparent" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mt-4 mt-lg-0">
                 <li class="nav-item px-2">
-                    <a class="nav-link active" aria-current="page" href="#">
+                    <a class="nav-link {{'active' if category == 'sports' }}" aria-current="page" href="/category/sports">
                         Sports
                     </a>
                 </li>
                 <li class="nav-item px-2">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link {{'active' if category == 'health' }}" href="/category/health">
                         Health
                     </a>
                 </li>
                 <li class="nav-item px-2">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link {{'active' if category == 'politics' }}" href="/category/politics">
                         Politics
                     </a>
                 </li>
                 <li class="nav-item px-2">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link {{'active' if category == 'business' }}" href="/category/business">
                         Business
                     </a>
                 </li>

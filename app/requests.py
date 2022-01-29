@@ -1,22 +1,24 @@
 import requests
-from .models import Sources,Articles
+from .models import Sources, Articles
 
 # Getting api key
 api_key = None
 # Getting the movie base url
 base_url = None
 
+
 def configure_request(app):
-    global api_key,base_url
+    global api_key, base_url
     api_key = app.config['NEWS_API_KEY']
     base_url = app.config['NEWS_API_BASE_URL']
 
-def get_headlines(country="us",page_size=10):  # get all sources from the news api
+
+def get_headlines(country="us", page_size=10):  # get all sources from the news api
     '''
     Function that gets the json response to our url request
     '''
-    headlines_endpoint = '{}/top-headlines?apiKey={}&pageSize={}&country={}'.format(base_url, api_key, page_size, country)
-    
+    headlines_endpoint = '{}/top-headlines?apiKey={}&pageSize={}&country={}'.format(
+        base_url, api_key, page_size, country)
 
     headlines_response = requests.get(headlines_endpoint).json()
 
@@ -26,20 +28,24 @@ def get_headlines(country="us",page_size=10):  # get all sources from the news a
         source_results_list = headlines_response['articles']
         headline_results = process_results_articles(source_results_list)
 
-    return headline_results  
+    return headline_results
 
 
-def get_all_news(sources="engadget,techcrunch,abc-news,al-jazeera-english,bbc-news", page_size=30, category=None):  # get all sources from the news api
+# get all sources from the news api
+def get_all_news(sources="engadget,techcrunch,abc-news,al-jazeera-english,bbc-news", page_size=30, category=None, country="us"):
     '''
     Function that gets the json response to our url request
     '''
-    headlines_endpoint = '{}/everything?apiKey={}&pageSize={}&sources={}'.format(base_url, api_key, page_size, sources)
+    headlines_endpoint = '{}/everything?apiKey={}&pageSize={}&sources={}'.format(
+        base_url, api_key, page_size, sources)
 
     if category:
-        headlines_endpoint = '{}/top-headlines?apiKey={}&pageSize={}&categoty={}'.format(base_url, api_key, page_size, category)
-    
+        headlines_endpoint = '{}/top-headlines?apiKey={}&pageSize={}&category={}&country={}'.format(
+            base_url, api_key, page_size, category, country)
 
     headlines_response = requests.get(headlines_endpoint).json()
+
+    print(headlines_response)
 
     headline_results = None
 
@@ -47,7 +53,7 @@ def get_all_news(sources="engadget,techcrunch,abc-news,al-jazeera-english,bbc-ne
         source_results_list = headlines_response['articles']
         headline_results = process_results_articles(source_results_list)
 
-    return headline_results  
+    return headline_results
 
 
 def get_sources():  # get all sources from the news api
@@ -64,7 +70,7 @@ def get_sources():  # get all sources from the news api
         source_results_list = get_source_response['sources']
         source_results = process_results_sources(source_results_list)
 
-    return source_results      
+    return source_results
 
 
 def process_results_articles(articles_list):
@@ -106,4 +112,4 @@ def process_results_sources(source_list):
             id, name, description, url, category, language)
         source_results.append(source_object)
 
-    return source_results    
+    return source_results
