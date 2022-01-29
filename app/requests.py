@@ -11,12 +11,29 @@ def configure_request(app):
     api_key = app.config['NEWS_API_KEY']
     base_url = app.config['NEWS_API_BASE_URL']
 
+def get_headlines(country="us",page_size=10):  # get all sources from the news api
+    '''
+    Function that gets the json response to our url request
+    '''
+    headlines_endpoint = '{}/top-headlines?apiKey={}&pageSize={}&country={}'.format(base_url, api_key, page_size, country)
+    
+
+    headlines_response = requests.get(headlines_endpoint).json()
+
+    headline_results = None
+
+    if headlines_response['articles']:
+        source_results_list = headlines_response['articles']
+        headline_results = process_results_articles(source_results_list)
+
+    return headline_results    
+
+
 def get_sources():  # get all sources from the news api
     '''
     Function that gets the json response to our url request
     '''
     source_endpoint = '{}/sources?apiKey={}'.format(base_url, api_key)
-    print(source_endpoint)
 
     get_source_response = requests.get(source_endpoint).json()
 
@@ -26,7 +43,7 @@ def get_sources():  # get all sources from the news api
         source_results_list = get_source_response['sources']
         source_results = process_results_sources(source_results_list)
 
-    return source_results    
+    return source_results      
 
 
 def process_results_articles(articles_list):

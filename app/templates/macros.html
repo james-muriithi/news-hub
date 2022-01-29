@@ -1,8 +1,8 @@
 {% macro displayNewstags(tags) %}
 
 {% for tag in tags %}
-    <a href="#" class="mx-2 tag btn mb-3 mb-lg-0 border-primary border-1 rounded-pill text-primary">
-        {{tag.name}}
+    <a href="{{tag.url}}" target="_blank" class="mx-2 tag btn mb-3 border-primary border-1 rounded-pill text-primary">
+        #{{tag.name}}
     </a>
 {% endfor %}
 
