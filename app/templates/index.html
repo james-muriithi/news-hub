@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% from "macros.html" import displayNewstags, displayNewsArticles %}
+
 {% block content %}
 
 <!-- banner -->
@@ -58,6 +60,7 @@
                 </div>
             </div>
         </div>
+
         <div class="tags d-flex flex-wrap justify-content-center align-items-center mt-4">
             <a href="#" class="mx-2 tag btn mb-3 mb-lg-0 border-primary border-1 rounded-pill text-primary">
                 #Abc News
@@ -81,5 +84,19 @@
     </div>
 </section>
 <!-- end banner -->
+
+<!-- top news -->
+
+<!-- section top news -->
+<section id="top-news" class="py-5 px-1 px-lg-3">
+    <div class="container-fluid">
+        <div class="section-title">
+            <h2 class="fw-bold text-center fs-4">Top News</h2>
+            {% with news = [1, 2] %}
+            {{ displayNewsArticles(news) }}
+            {% endwith %}
+        </div>
+    </div>
+</section>
 
 {% endblock %}

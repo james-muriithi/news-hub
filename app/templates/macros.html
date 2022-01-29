@@ -1,0 +1,22 @@
+{% macro displayNewstags(tags) %}
+
+{% for tag in tags %}
+    <a href="#" class="mx-2 tag btn mb-3 mb-lg-0 border-primary border-1 rounded-pill text-primary">
+        {{tag.name}}
+    </a>
+{% endfor %}
+
+{% endmacro %}
+
+
+{% macro displayNewsArticles(articles) %}
+
+<div class="news row mt-5 mx-0">
+{% for article in articles %}
+    <div class="col-lg-6 mb-4">
+        {% include "news-card.html" %}
+    </div>
+{% endfor %}
+</div>
+
+{% endmacro %}
