@@ -20,3 +20,11 @@ def category(category):
     title = category.title()
 
     return render_template("category.html", news_articles=top_news, title=title, category=category)    
+
+@main.route('/source/<source>')
+def souce(source):
+    top_news = get_all_news(sources=source)
+
+    title = source.title()
+
+    return render_template("source.html", news_articles=top_news, title=title, source=title)        
