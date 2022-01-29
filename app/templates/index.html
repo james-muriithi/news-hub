@@ -13,11 +13,8 @@
     <div class="container-fluid">
         <div class="section-title">
             <h2 class="fw-bold text-center fs-4">Top News</h2>
-            {% with news = [1, 2] %}
-            {{ displayNewsArticles(news) }}
-            {% endwith %}
+            {{ displayNewsArticles(top_news) }}
         </div>
-    </div>
 </section>
 
 {% endblock %}

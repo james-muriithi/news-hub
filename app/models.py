@@ -1,3 +1,6 @@
+from datetime import datetime
+
+
 class Sources:
     """
     Sources class to define sources object
@@ -23,5 +26,5 @@ class Articles:
         self.description = description
         self.url = url
         self.url_to_Image = url_to_Image
-        self.published_at = published_at
         self.content = content
+        self.published_at = datetime.strptime(published_at, "%Y-%m-%dT%H:%M:%SZ").strftime("%B %d, %Y")

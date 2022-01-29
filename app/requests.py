@@ -26,7 +26,28 @@ def get_headlines(country="us",page_size=10):  # get all sources from the news a
         source_results_list = headlines_response['articles']
         headline_results = process_results_articles(source_results_list)
 
-    return headline_results    
+    return headline_results  
+
+
+def get_all_news(sources="engadget,techcrunch,abc-news,al-jazeera-english,bbc-news", page_size=30, category=None):  # get all sources from the news api
+    '''
+    Function that gets the json response to our url request
+    '''
+    headlines_endpoint = '{}/everything?apiKey={}&pageSize={}&sources={}'.format(base_url, api_key, page_size, sources)
+
+    if category:
+        headlines_endpoint = '{}/top-headlines?apiKey={}&pageSize={}&categoty={}'.format(base_url, api_key, page_size, category)
+    
+
+    headlines_response = requests.get(headlines_endpoint).json()
+
+    headline_results = None
+
+    if headlines_response['articles']:
+        source_results_list = headlines_response['articles']
+        headline_results = process_results_articles(source_results_list)
+
+    return headline_results  
 
 
 def get_sources():  # get all sources from the news api
@@ -60,7 +81,7 @@ def process_results_articles(articles_list):
         published_at = article_item.get('publishedAt')
         content = article_item.get('content')
 
-        if url_to_image:
+        if url_to_image and url_to_image != 'null':
             articles_object = Articles(
                 author, title, description, url, url_to_image, published_at, content)
             articles_results.append(articles_object)

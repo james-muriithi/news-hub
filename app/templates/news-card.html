@@ -1,17 +1,17 @@
 <div class="news-card row px-0">
     <div class="col-sm-5 col-md-4">
-        <img src="{{url_for("static", filename="images/main-news.png")}}" alt="" class="img-fluid h-100">
+        <img src="{{article.url_to_Image}}" alt="" class="img-fluid h-100">
     </div>
     <div class="col-sm-7 col-md-8 d-flex flex-column">
-        <a href="#" class="fw-bold text-primary fs-5 pt-4 pt-sm-0">Lorem ipsum dolor sit amet, consectetur.</a>
+        <a href="{{article.url}}" target="_blank"class="fw-bold text-primary fs-5 pt-4 pt-sm-0">{{article.title}}</a>
         <div class="">
             <p class="pt-2">
-                While some believe the West is aggravating the situation, most want an urgent diplomatic resolution....
+                {{article.description}}
             </p>
         </div>
         <div class="d-flex flex-grow-1 align-items-end links">
-            <a href="#" class="text-secondary fw-bold">Read more</a>
-            <span class="ms-auto date">2nd Jan, 2022</span>
+            <a href="{{article.url}}" target="_blank" class="text-secondary fw-bold">Read more</a>
+            <span class="ms-auto date">{{article.published_at}}</span>
         </div>
     </div>
 </div>
