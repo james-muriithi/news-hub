@@ -1,5 +1,5 @@
 import unittest
-from ..app.models import Articles
+from app.models import Articles
 
 class TestArticle(unittest.TestCase):
     def setUp(self):
@@ -19,7 +19,4 @@ class TestArticle(unittest.TestCase):
         """
         Method to test if the articles variable is an instance of Articles class
         """
-        self.assertTrue(isinstance(self.new_article, Articles))
-
-if __name__ == "__main__":
-    unittest.main()          
+        self.assertTrue(isinstance(self.article, Articles))        
