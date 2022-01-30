@@ -1,4 +1,4 @@
-name: Python application
+name: News Hub
 on:
   push:
     branches: [ main ]
