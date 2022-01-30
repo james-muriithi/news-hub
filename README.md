@@ -20,21 +20,21 @@ git clone https://github.com/james-muriithi/news-hub.git
 ```
 
 ```shell
-$foo~bar: cd news-hub
+cd news-hub
 ```
 * create virtual environment 
 ```shell
-$foo~bar: python3.8 -m venv --without-pip venv
+python3.8 -m venv --without-pip venv
 ```
 
 * To activate the virtual environment
 ```shell
-$foo~bar: source venv/bin/activate
+source venv/bin/activate
 ```
 
 * install the packages from requirements.txt
 ```shell
-$foo~bar: pip install -r requirements.txt 
+pip install -r requirements.txt 
 ```
 
 * setup environment variables
@@ -43,8 +43,8 @@ cp .env.example .env
 ```
 * Execute the shell script and start the server
 ```shell
-$foo~bar: chmod a+x start.sh
-$foo~bar: ./start.sh
+chmod a+x start.sh
+./start.sh
 ```
 * open the browser and navigate to http://127.0.0.1:5000/ to see the application in action
 
