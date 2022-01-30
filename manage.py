@@ -3,7 +3,7 @@ from app import create_app
 from flask_script import Manager,Server
 from decouple import config
 
-app = create_app(config('env', default="development"))
+app = create_app(config('ENV', default="development"))
 
 manager = Manager(app)
 manager.add_command('server',Server)
