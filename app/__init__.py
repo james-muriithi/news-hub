@@ -5,6 +5,9 @@ from .requests import configure_request
 
 
 def create_app(config_name):
+    """
+    Function to create an app instance
+    """
 
     app = Flask(__name__)
 

@@ -45,8 +45,6 @@ def get_all_news(sources="engadget,techcrunch,abc-news,al-jazeera-english,bbc-ne
 
     headlines_response = requests.get(headlines_endpoint).json()
 
-    print(headlines_response)
-
     headline_results = None
 
     if headlines_response['articles']:
