@@ -22,7 +22,6 @@ git clone https://github.com/james-muriithi/news-hub.git
 ```shell
 $foo~bar: cd news-hub
 ```
-*
 * create virtual environment 
 ```shell
 $foo~bar: python3.8 -m venv --without-pip venv
